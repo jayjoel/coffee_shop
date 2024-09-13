@@ -20,7 +20,7 @@ def test_order_properties():
 
 def test_order_all_orders():
     customer1 = Customer("Jay")
-    customer2 = Customer("JaneDoe")
+    customer2 = Customer("Domie")
     order1 = Order(customer1, "Cappuccino", 4.5)
     order2 = Order(customer2, "Latte", 4.0)
     
