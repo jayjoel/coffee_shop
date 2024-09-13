@@ -1,0 +1,36 @@
+# This project is a simple simulation of a coffee shop order system. It consists of three main classes: Customer, Coffee, and Order.
+
+# Installation
+To install the coffee_shop project, you can use pip:
+pip install coffee_shop
+
+# Usage
+# Here is an example of how to use the classes in the coffee_shop project:
+from customer import Customer
+from coffee import Coffee
+from order import Order
+
+# Create a customer
+customer = Customer("Jay")
+
+# Create a coffee
+coffee = Coffee("Cappuccino", 3.5)
+
+# Create an order
+order = Order(customer, coffee, 3.5)
+
+# Access order properties
+print(order.customer)  # Output: <Customer: Jay>
+print(order.coffee)    # Output: <Coffee: Cappuccino>
+print(order.price)     # Output: 3.5
+
+# Access all orders
+all_orders = Order.all_orders()
+print(all_orders)  # Output: [<Order: Jay's Cappuccino>, <Order: JaneDoe's Latte>]
+
+# Running Tests
+- To run the tests for the coffee_shop project, you can use pytest:
+pytest tests.py
+
+# Contributing
+- Contributions are welcome! If you find any bugs or have suggestions for improvements, please submit a pull request.
