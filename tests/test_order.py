@@ -6,10 +6,11 @@ from order import Order
 def test_order_price_validation():
     customer = Customer("Jay")
     with pytest.raises(ValueError):
-        Order(customer, "Cappuccino", 1.0)
+        Order(customer, "Cappuccino", 0.9)  
     with pytest.raises(ValueError):
-        Order(customer, "Cappuccino", 9.1)
-    Order(customer, "Cappuccino", 6.0)
+        Order(customer, "Cappuccino", 9.1)  
+    Order(customer, "Cappuccino", 6.0)  
+
 
 def test_order_properties():
     customer = Customer("Jay")

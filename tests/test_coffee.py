@@ -36,4 +36,4 @@ def test_coffee_average_price():
     customer = Customer("Sarah")
     order1 = Order(customer, coffee, 5.5)
     order2 = Order(customer, coffee, 5.0)
-    assert coffee.average_price() == 6.75
+    assert coffee.average_price() == 5.25

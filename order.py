@@ -1,13 +1,13 @@
 class Order:
-    _orders = []
+    orders = []
 
     def __init__(self, customer, coffee, price):
-        if not isinstance(price, float) or price < 1.0 or price > 10.0:
-            raise ValueError("Invalid price")
+        if not isinstance(price, float) or price < 1.0 or price > 9.0:
+            raise ValueError("Invalid price. Must be between 0 and 9")
         self._customer = customer
         self._coffee = coffee
         self._price = price
-        Order._orders.append(self)
+        Order.orders.append(self)
 
     @property
     def customer(self):
@@ -23,4 +23,4 @@ class Order:
 
     @classmethod
     def all_orders(cls):
-        return cls._orders
+        return cls.orders
