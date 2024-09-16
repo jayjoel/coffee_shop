@@ -1,3 +1,4 @@
+'''
 # This project is a simple simulation of a coffee shop order system. It consists of three main classes: Customer, Coffee, and Order.
 
 # Installation
@@ -34,3 +35,4 @@ pytest tests.py
 
 # Contributing
 - Contributions are welcome! If you find any bugs or have suggestions for improvements, please submit a pull request.
+'''
