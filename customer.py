@@ -1,31 +1,38 @@
+from order import Order
+
 class Customer:
     def __init__(self, name):
-
-        if not isinstance(name, str) or len(name) < 1 or len(name) > 15:
-            
-            raise ValueError("Invalid customer name")
-        
-        self._name = name
-
-    @property
-    def name(self):
-        return self._name
+        if not name or len(name) < 2:
+            raise ValueError("Customer name must be at least 2 characters long.")
+        self.name = name
+        self._orders = []  # Initialize orders list
 
     def create_order(self, coffee, price):
-        from order import Order
-        return Order(self, coffee, price)
+        order = Order(self, coffee, price)
+        self._orders.append(order)
+        coffee.add_order(order)  # Link the order to the coffee
+        return order
 
     def orders(self):
-        from order import Order
-        return [order for order in Order.all_orders() if order.customer == self]
+        return self._orders
 
     def coffees(self):
-        return set(order.coffee for order in self.orders())
+        return {order.coffee.name for order in self._orders}
 
-    @classmethod
-    def most_aficionado(cls, coffee):
+    @staticmethod
+    def most_aficionado(coffee_name):
+        """Determines the customer who has ordered the most of a specific coffee."""
         from order import Order
-        orders = [order for order in Order.all_orders() if order.coffee == coffee]
-        if not orders:
+        all_orders = Order.all_orders()
+        
+        # Filter orders for the specific coffee
+        coffee_orders = [order for order in all_orders if order.coffee.name == coffee_name]
+        if not coffee_orders:
             return None
-        return max(orders, key=lambda order: order.price).customer
+        
+        # Count how many times each customer has ordered the coffee
+        customer_order_count = {}
+        for order in coffee_orders:
+            customer_order_count[order.customer] = customer_order_count.get(order.customer, 0) + 1
+        
+        return max(customer_order_count, key=customer_order_count.get)
